@@ -26,7 +26,6 @@ if (!fs.existsSync(dataPath)) {
       question__title_slug: slug,
     },
   }) => ({ id, slug })).sort((a, b) => a.id - b.id)
-
   for (let problem of problems) {
     const { id, slug } = problem
     let idStr = numberPadZero(id, 4)
@@ -35,9 +34,11 @@ if (!fs.existsSync(dataPath)) {
     console.log(`Downloading ${slug}`)
 
     const { data: questionData } = await request({ url: `https://leetcode.com/problems/${slug}` })
+    fs.writeFileSync(`${dataPath}/${filename}`, questionData)
     const questionText = parseXpath(questionData, 'head > meta[name="description"]', 'content')
-    fs.writeFileSync(`${dataPath}/${filename}`, questionText)
 
+    //fs.writeFileSync(`${dataPath}/${filename}`, questionText)
+    console.log(questionText)
     console.log(`Downloaded ${filename}`)
 
     await sleep(SLEEP_TIME)

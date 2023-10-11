@@ -1,3 +1,1 @@
-node fetchSubmission.js
-node fetchQuestion.js
-node mergeQA.js
+nohup node fetchSubmission.js &  python3 fetchQuestions.py
