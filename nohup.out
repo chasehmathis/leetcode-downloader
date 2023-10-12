@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "fetchQuestions.py", line 31, in <module>
+    main()
+  File "fetchQuestions.py", line 28, in main
+    fetch_one_question(slug, num)
+  File "fetchQuestions.py", line 15, in fetch_one_question
+    soup2 = BeautifulSoup(json_data['props']['pageProps']['dehydratedState']['queries'][6]['state']['data']['question']['content'], 'html.parser')
+KeyError: 'content'
